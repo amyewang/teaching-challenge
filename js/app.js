@@ -19,21 +19,37 @@ console.log(food);
 * use pluck
 * remember to print your result to the console (hint: you can use the value function)!
 */
-
+var names = Lazy(food)
+  .pluck('name')
+  .value();
+console.log(names);
 
 /**
 * 2. return an array of foods with the type fruit
 * use filter
 * remember to print your result to the console!
 */
-
+var vegs = Lazy(food)
+  .filter(function(item) { return item.type === 'fruit' })
+  .value();
+console.log(vegs);
 
 /**
 * 3. return an array of foods that change the type of vegetables from "vegetable" to "gross"
 * use map
 * remember to print your result to the console!
 */
-
+var gross = Lazy(food)
+  .map(function(item) {
+    if(item.type === 'vegetable') {
+      return {'name': item.name, 'type': item.type = 'gross'};
+    }
+    else {
+      return {'name': item.name, 'type': item.type};
+    }
+  })
+  .value();
+console.log(gross);
 
 /**
 * 4. return an array of foods that change the type of all foods to "produce",
@@ -41,7 +57,11 @@ console.log(food);
 * use map, take
 * remember to print your result to the console!
 */
-
+var produce = Lazy(food)
+  .map(function(item) { return {'name': item.name, 'type': item.type = 'produce'}; })
+  .take(2)
+  .value();
+console.log(produce);
 
 
 
@@ -51,3 +71,7 @@ console.log(food);
 * only return unique numbers
 * print to the console using the each function
 */
+Lazy.generate(Math.random)
+  .map(function(e) { return Math.floor(e * 1000) + 1; })
+  .uniq()
+  .each(function(e) { console.log(e); });
