@@ -29,10 +29,10 @@ console.log(names);
 * use filter
 * remember to print your result to the console!
 */
-var vegs = Lazy(food)
+var fruits = Lazy(food)
   .filter(function(item) { return item.type === 'fruit' })
   .value();
-console.log(vegs);
+console.log(fruits);
 
 /**
 * 3. return an array of foods that change the type of vegetables from "vegetable" to "gross"
