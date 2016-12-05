@@ -74,4 +74,5 @@ console.log(produce);
 Lazy.generate(Math.random)
   .map(function(e) { return Math.floor(e * 1000) + 1; })
   .uniq()
+  .take(10)
   .each(function(e) { console.log(e); });
